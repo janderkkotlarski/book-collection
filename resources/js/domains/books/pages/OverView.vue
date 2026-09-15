@@ -1,9 +1,15 @@
 <script>
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { getAllBooks, fetchBooks } from '../store';
 
+
+
 fetchBooks();
-getAllBooks();
+
+const allBooks = getAllBooks;
+
+// console.log(allBooks[0]);
+
 </script>
 
 <template>
@@ -12,7 +18,7 @@ getAllBooks();
             <th>Title</th>
             <th>Summary</th>
         </tr>
-        <tr v-for="book in getAllBooks" :key="book.id">
+        <tr v-for="book in allBooks" :key="book.id">
             <td>{{ book.title }}</td>
             <td>{{ book.summary }}</td>
         </tr>
