@@ -1,4 +1,4 @@
-<script setup lan>
+<script setup lang=""ts>
 import { onMounted, ref } from 'vue';
 import { getAllBooks, fetchBooks } from '../store';
 
