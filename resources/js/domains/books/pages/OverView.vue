@@ -1,5 +1,5 @@
-<script setup lang=""ts>
-import { onMounted, ref } from 'vue';
+<script setup lang="ts">
+import { onMounted } from 'vue';
 import { getAllBooks, fetchBooks } from '../store';
 
 fetchBooks();
@@ -15,16 +15,9 @@ fetchBooks();
             <th>Summary</th>
         </tr>
         <!-- Because of Json resource management, these three warnings exist, though the code works well-->
-        <tr v-for="Book in getAllBooks" :key="Book.id">
-            <td>{{ Book.title }}</td>
-            <td>{{ Book.summary }}</td>
+        <tr v-for="book in getAllBooks" :key="book.id">
+            <td>{{ book.title }}</td>
+            <td>{{ book.summary }}</td>
         </tr>
     </table>
-
-    <br />
-    <br />
-
-    {{ getAllBooks }}
-
-    
 </template>
