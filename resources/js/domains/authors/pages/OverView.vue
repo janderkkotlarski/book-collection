@@ -12,7 +12,6 @@ fetchAuthors();
     <table>
         <tr>
             <th>Name</th>
-            <th>Summary</th>
         </tr>
         <!-- Because of Json resource management, these three warnings exist, though the code works well-->
         <tr v-for="author in getAllAuthors" :key="author.id">
