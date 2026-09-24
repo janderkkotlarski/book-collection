@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Book;
+use App\Models\Author;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class BookFactory extends Factory
     public function definition(): array
     {
         return [
+            'author_id' => Author::inRandomOrder()->first()->id,
             'title' => fake()->words(2, true),
             'summary' => fake()->sentence()
         ];
