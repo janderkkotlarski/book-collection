@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             AuthorSeeder::class,
         ]);
 
-        // $this->call([
-        //     BookSeeder::class,
-        // ]);
+        $this->call([
+            BookSeeder::class,
+        ]);
     }
 }
