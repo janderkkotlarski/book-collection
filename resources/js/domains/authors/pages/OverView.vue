@@ -17,5 +17,10 @@ fetchAuthors();
         <tr v-for="author in getAllAuthors" :key="author.id">
             <td>{{ author.name }}</td>
         </tr>
-    </table>    
+    </table>
+
+    <br />
+    <br />
+
+    <div>authors overview reached</div>
 </template>

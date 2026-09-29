@@ -1,5 +1,5 @@
-import Overview from './pages/OverView.vue';
+import AuthorOverview from './pages/OverView.vue';
 
 export const authorRoutes =  [
-    { path: '/authors', component: Overview, name: 'authors.overview' }
+    { path: '/authors', component: AuthorOverview, name: 'authors.overview' }
 ];
