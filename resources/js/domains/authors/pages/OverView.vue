@@ -18,9 +18,4 @@ fetchAuthors();
             <td>{{ author.name }}</td>
         </tr>
     </table>
-
-    <br />
-    <br />
-
-    <div>authors overview reached</div>
 </template>
