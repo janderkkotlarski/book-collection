@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
-import { getAllBooks, fetchBooks } from '../store';
+import { getAllBooks, fetchBooks, deleteBook } from '../store';
 
 fetchBooks();
 
@@ -19,6 +19,7 @@ fetchBooks();
             <td>{{ book.title }}</td>
             <td>{{ book.summary }}</td>
             <td><RouterLink :to="{ name: 'books.edit', params: { id: book.id } }">Bewerk</RouterLink></td>
+            <td><button @click="deleteBook(book.id)">Verwijder</button></td>
         </tr>
     </table>
 </template>
