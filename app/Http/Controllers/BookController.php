@@ -19,4 +19,11 @@ class BookController extends Controller
         $books = Book::all();
         return BookResource::collection($books);
     }
+
+    public function update(StoreBookRequest $request, Book $book) {
+        $book->update($request->validated());
+
+        $books = Book::all();
+        return BookResource::collection($books);
+    }
 }
