@@ -1,5 +1,7 @@
-import AuthorOverview from './pages/OverView.vue';
+import AuthorsOverview from './pages/OverView.vue';
+import AuthorsCreate from './pages/CreAte.vue';
 
 export const authorRoutes =  [
-    { path: '/authors', component: AuthorOverview, name: 'authors.overview' }
+    { path: '/authors', component: AuthorsOverview, name: 'authors.overview' },
+    { path: '/create', component: AuthorsCreate, name: 'authors.create' },
 ];

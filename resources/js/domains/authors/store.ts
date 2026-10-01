@@ -13,3 +13,9 @@ export const fetchAuthors = async () => {
     if(!data) return
     authors.value = data;
 };
+
+export const createAuthor = async (newAuthor) => {
+    const {data} = await axios.post('/api/authors', newAuthor);
+    if(!data) return
+    authors.value = data;
+};

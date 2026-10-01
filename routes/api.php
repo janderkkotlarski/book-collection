@@ -11,6 +11,9 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/authors', [AuthorController::class, 'index']);
+
+Route::post('/authors', [AuthorController::class, 'store']);
+
 Route::get('/books', [BookController::class, 'index']);
 
 Route::post('/books', [BookController::class, 'store']);

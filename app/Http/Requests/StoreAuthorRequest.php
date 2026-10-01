@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreBookRequest extends FormRequest
+class StoreAuthorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,7 @@ class StoreBookRequest extends FormRequest
      */
     public function rules(): array {
         return [
-            'author_id' => 'required|exists:authors,id',
-            'title' => 'required|string|max:255',
-            'summary' => 'required|string'
-            
+            'name' => 'required|string|max:255',
         ];
     }
 }
