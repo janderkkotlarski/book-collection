@@ -13,8 +13,15 @@ class AuthorController extends Controller
         return AuthorResource::collection(Author::all());
     }
 
-        public function store(StoreAuthorRequest $request) {
+    public function store(StoreAuthorRequest $request) {
         $author = Author::create($request->validated());
+
+        $authors = Author::all();
+        return AuthorResource::collection($authors);
+    }
+
+    public function update(StoreAuthorRequest $request, Author $author) {
+        $author->update($request->validated());
 
         $authors = Author::all();
         return AuthorResource::collection($authors);
