@@ -27,3 +27,8 @@ export const updateAuthor = async (id, updatedAuthor) => {
     if (!data) return;
     authors.value = data;
 };
+
+export const deleteAuthor = async (id) => {
+    await axios.delete(`/api/authors/${id}`);
+    authors.value = authors.value.filter(author => author.id !== id);
+};

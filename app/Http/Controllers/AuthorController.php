@@ -26,4 +26,9 @@ class AuthorController extends Controller
         $authors = Author::all();
         return AuthorResource::collection($authors);
     }
+
+    public function destroy(Author $author) {
+        $author->delete();
+        return response()->json(['message' => 'Auteur succesvol verwijderd']);
+    }
 }
