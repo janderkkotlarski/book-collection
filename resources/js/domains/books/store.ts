@@ -1,11 +1,14 @@
-import axios from 'axios';
 import { ref, computed } from 'vue';
 
+import { storeModuleFactory } from '../../services/store';
 
 import { getRequest, postRequest, putRequest, deleteRequest } from '../../services/http';
 
+
 // state
 const books = ref([]);
+
+export const bookStore = storeModuleFactory('books');
 
 // getters
 export const getAllBooks = computed(() => books.value);

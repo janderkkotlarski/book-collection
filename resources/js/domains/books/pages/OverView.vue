@@ -2,6 +2,8 @@
 import { onMounted } from 'vue';
 import { getAllBooks, fetchBooks, deleteBook } from '../store';
 
+import { bookStore } from '../store';
+
 fetchBooks();
 
 </script>
