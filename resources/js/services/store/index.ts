@@ -1,5 +1,7 @@
 import { ref, computed } from 'vue';
 
+import { getRequest, postRequest, putRequest, deleteRequest } from '../http';
+
 export const storeModuleFactory = (moduleName) => {
     const state = ref({});
 
@@ -20,7 +22,7 @@ export const storeModuleFactory = (moduleName) => {
 
     const actions = {
         getAll: async () => {
-            const { data } = await getRequest(moduleName);
+            const { data } = await getRequest('/'.concat(moduleName));
             if (!data) return;
             setters.setAll(data);
         }, 

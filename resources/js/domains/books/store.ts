@@ -13,6 +13,8 @@ export const bookStore = storeModuleFactory('books');
 // getters
 export const getAllBooks = computed(() => books.value);
 
+export const getAllBooks_ = bookStore.getters.all;
+
 export const getBookById = (id) => computed(() => books.value.find(book => book.id == id));
 
 export const fetchBooks = async () => {
@@ -20,6 +22,14 @@ export const fetchBooks = async () => {
     if(!data) return;
     books.value = data;
 };
+
+// getAll: async () => {
+//             const { data } = await getRequest(moduleName);
+//             if (!data) return;
+//             setters.setAll(data);
+//         }, 
+
+export const fetchBooks_ = bookStore.actions.getAll();
 
 export const createBook = async (newBook) => {
     const {data} = await postRequest('/books', newBook);
@@ -33,7 +43,12 @@ export const updateBook = async (id, updatedBook) => {
     books.value = data;
 };
 
+// export const deleteBook = async (id) => {
+//     await deleteRequest(`/books/${id}`);
+//     books.value = books.value.filter(book => book.id !== id);
+// };
+
 export const deleteBook = async (id) => {
-    await deleteRequest(`/books/${id}`);
-    books.value = books.value.filter(book => book.id !== id);
+    await bookStore.actions.delete(id);
+    // code...
 };
