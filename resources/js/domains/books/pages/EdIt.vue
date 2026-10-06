@@ -9,8 +9,6 @@ const router = useRouter();
 
 fetchBooks;
 
-
-
 const book = getBookById(route.params.id);
 
 const handleSubmit = async (data) => {
@@ -18,7 +16,6 @@ const handleSubmit = async (data) => {
     router.push({ name: 'books.overview' });
 };
 
-// const handleSubmit = updateBook;
 </script>
 
 <template>

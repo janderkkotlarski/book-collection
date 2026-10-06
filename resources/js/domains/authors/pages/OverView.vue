@@ -2,7 +2,7 @@
 import { onMounted } from 'vue';
 import { getAllAuthors, fetchAuthors, deleteAuthor } from '../store';
 
-fetchAuthors();
+fetchAuthors;
 
 </script>
 

@@ -2,35 +2,9 @@
 import { onMounted } from 'vue';
 import { getAllBooks, fetchBooks, deleteBook } from '../store';
 
-import { bookStore } from '../store';
-
-// const addBook = async () => {
-//     await bookStore.actions.create({ title: 'Nieuw Boek', author: 'Auteur X' });
-//     // code...
-// };
-
-// const updateBook = async (id) => {
-//     await bookStore.actions.update(id, { title: 'Aangepast Boek' });
-//     // code...
-// };
-
-// // const deleteBook = async (id) => {
-// //     await bookStore.actions.delete(id);
-// //     // code...
-// // };
-
-
-
-// // Waarbij 1 het ID is van het boek dat je wilt ophalen uit de state
-// const book = bookStore.getters.getById(1);
-
-// bookStore.actions.getAll();
-
 fetchBooks;
 
 </script>
-
-
 
 <template>
     <table>

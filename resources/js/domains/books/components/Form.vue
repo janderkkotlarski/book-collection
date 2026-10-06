@@ -3,7 +3,7 @@ import { ref } from 'vue';
 import { fetchAuthors, getAllAuthors } from '../../authors/store';
 
 // Fetch authors when component is mounted
-fetchAuthors();
+fetchAuthors;
 
 const props = defineProps({ book: Object });
 

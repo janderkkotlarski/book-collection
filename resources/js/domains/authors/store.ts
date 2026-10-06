@@ -1,36 +1,23 @@
-import axios from 'axios';
-import { ref, computed } from 'vue';
+import { storeModuleFactory } from '../../services/store';
 
-import { getRequest, postRequest, putRequest, deleteRequest } from '../../services/http';
-
-// state
-const authors = ref([]);
+// Establish author store
+export const authorStore = storeModuleFactory('authors');
 
 // getters
-export const getAllAuthors = computed(() => authors.value);
-
-export const getAuthorById = (id) => computed(() => authors.value.find(author => author.id == id));
+export const getAllAuthors = authorStore.getters.all;
+export const getAuthorById = (id) => authorStore.getters.getById(id);
 
 // actions
-export const fetchAuthors = async () => {
-    const {data} = await getRequest('/authors');
-    if(!data) return
-    authors.value = data;
-};
+export const fetchAuthors = authorStore.actions.getAll();
 
 export const createAuthor = async (newAuthor) => {
-    const {data} = await postRequest('/authors', newAuthor);
-    if(!data) return
-    authors.value = data;
+    await authorStore.actions.create(newAuthor);
 };
 
 export const updateAuthor = async (id, updatedAuthor) => {
-    const { data } = await putRequest(`/authors/${id}`, updatedAuthor);
-    if (!data) return;
-    authors.value = data;
+    await authorStore.actions.update(id, updatedAuthor); 
 };
 
 export const deleteAuthor = async (id) => {
-    await deleteRequest(`/authors/${id}`);
-    authors.value = authors.value.filter(author => author.id !== id);
+    await authorStore.actions.delete(id);
 };

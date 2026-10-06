@@ -7,7 +7,7 @@ import { fetchAuthors, getAuthorById, updateAuthor } from '../store';
 const route = useRoute();
 const router = useRouter();
 
-fetchAuthors();
+fetchAuthors;
 
 const author = getAuthorById(route.params.id);
 
