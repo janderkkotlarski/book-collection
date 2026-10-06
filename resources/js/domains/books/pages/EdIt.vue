@@ -7,7 +7,9 @@ import { fetchBooks, getBookById, updateBook } from '../store';
 const route = useRoute();
 const router = useRouter();
 
-fetchBooks();
+fetchBooks;
+
+
 
 const book = getBookById(route.params.id);
 
@@ -15,6 +17,8 @@ const handleSubmit = async (data) => {
     await updateBook(route.params.id, data);
     router.push({ name: 'books.overview' });
 };
+
+// const handleSubmit = updateBook;
 </script>
 
 <template>

@@ -22,7 +22,8 @@ export const storeModuleFactory = (moduleName) => {
 
     const actions = {
         getAll: async () => {
-            const { data } = await getRequest('/'.concat(moduleName));
+            // const { data } = await getRequest('/'.concat(moduleName));
+            const { data } = await getRequest(moduleName);
             if (!data) return;
             setters.setAll(data);
         }, 
