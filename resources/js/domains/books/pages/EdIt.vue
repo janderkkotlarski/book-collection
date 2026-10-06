@@ -12,7 +12,7 @@ fetchBooks;
 const book = getBookById(route.params.id);
 
 const handleSubmit = async (data) => {
-    await updateBook(route.params.id, data);
+    updateBook(route.params.id, data);
     router.push({ name: 'books.overview' });
 };
 

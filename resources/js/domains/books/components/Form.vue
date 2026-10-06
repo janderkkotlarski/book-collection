@@ -14,10 +14,15 @@ const form = ref({ ...props.book });
 const handleSubmit = () => emit('submit', form.value);
 </script>
 
+<ErrrorMessage />
+
 <template>
     <form @submit.prevent="handleSubmit">
+        <div>
         <label>Titel:</label>
         <input v-model="form.title" type="text" required />
+        <FormError name="title" />
+        </div>
 
         <label>Samenvatting:</label>
         <textarea v-model="form.summary" required></textarea>

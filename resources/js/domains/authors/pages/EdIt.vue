@@ -12,7 +12,7 @@ fetchAuthors;
 const author = getAuthorById(route.params.id);
 
 const handleSubmit = async (data) => {
-    await updateAuthor(route.params.id, data);
+    updateAuthor(route.params.id, data);
     router.push({ name: 'authors.overview' });
 };
 </script>
