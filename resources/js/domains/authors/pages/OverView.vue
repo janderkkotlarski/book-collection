@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted } from 'vue';
 import { getAllAuthors, fetchAuthors, deleteAuthor } from '../store';
+import ErrorMessage from '../../../services/error/ErrorMessage.vue';
+import FormError from '../../../services/error/FormError.vue';
 
 fetchAuthors;
 
@@ -9,6 +11,8 @@ fetchAuthors;
 
 
 <template>
+    <ErrorMessage />
+
     <table>
         <tr>
             <th>Name</th>
@@ -18,6 +22,10 @@ fetchAuthors;
             <td>{{ author.name }}</td>
             <td><RouterLink :to="{ name: 'authors.edit', params: { id: author.id } }">Bewerk</RouterLink></td>
             <td><button @click="deleteAuthor(author.id)">Verwijder</button></td>
+
+            <FormError name="author.name" />
         </tr>
+
+        
     </table>
 </template>

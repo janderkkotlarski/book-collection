@@ -6,4 +6,6 @@ import { getMessage } from '../error';
     <div v-if="getMessage">
         {{ getMessage }}
     </div>
+
+    hoi
 </template>

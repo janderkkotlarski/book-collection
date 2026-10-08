@@ -6,8 +6,6 @@ fetchBooks;
 
 </script>
 
-
-
 <template>
     <table>
         <tr>
