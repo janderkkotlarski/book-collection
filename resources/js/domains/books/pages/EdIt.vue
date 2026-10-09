@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+// import { ref, onMounted, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Form from '../components/Form.vue';
 import { fetchBooks, getBookById, updateBook } from '../store';
@@ -12,10 +12,9 @@ fetchBooks;
 const book = getBookById(route.params.id);
 
 const handleSubmit = async (data) => {
-    updateBook(route.params.id, data);
+    await updateBook(route.params.id, data);
     router.push({ name: 'books.overview' });
 };
-
 </script>
 
 <template>

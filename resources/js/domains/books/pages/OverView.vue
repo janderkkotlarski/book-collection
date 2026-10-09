@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+// import { onMounted } from 'vue';
 import { getAllBooks, fetchBooks, deleteBook } from '../store';
+import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 
 fetchBooks;
-
 </script>
 
 <template>
@@ -20,4 +20,6 @@ fetchBooks;
             <td><button @click="deleteBook(book.id)">Verwijder</button></td>
         </tr>
     </table>
+
+    <ErrorMessage />
 </template>

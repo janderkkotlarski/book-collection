@@ -1,9 +1,8 @@
 <script setup>
 import { ref } from 'vue';
-// import { fetchAuthors, getAllAuthors } from '../../authors/store';
 
-// // Fetch authors when component is mounted
-// fetchAuthors();
+import ErrorMessage from '../../../services/error/ErrorMessage.vue';
+import FormError from '../../../services/error/FormError.vue';
 
 const props = defineProps({ author: Object });
 
@@ -15,10 +14,14 @@ const handleSubmit = () => emit('submit', form.value);
 </script>
 
 <template>
+    <ErrorMessage />
+
     <form @submit.prevent="handleSubmit">
         <label>Naam:</label>
-        <input v-model="form.name" type="text" required />
+        <input v-model="form.name" type="text" />
 
         <button type="submit">Opslaan</button>
+
+        <FormError name="name" />
     </form>
 </template>

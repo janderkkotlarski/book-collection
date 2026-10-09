@@ -18,8 +18,7 @@ class BaseFormRequest extends FormRequest
      *
      * @throws \Illuminate\Http\Exceptions\HttpResponseException
      */
-    protected function failedValidation(Validator $validator): void
-    {
+    protected function failedValidation(Validator $validator): void {
         throw new HttpResponseException(new JsonResponse([
             'errors' => $validator->errors(),
             'message' => 'De ingevoerde gegevens zijn niet juist',

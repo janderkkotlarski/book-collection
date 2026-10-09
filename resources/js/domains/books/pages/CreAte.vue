@@ -13,7 +13,7 @@ const book = ref({
 });
 
 const handleSubmit = async (data) => {
-    createBook(data);
+    await createBook(data);
     router.push({name: 'books.overview'});
 };
 </script>

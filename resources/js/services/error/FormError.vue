@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getErrorByProperty } from './index';
+import { getErrorBag, getErrorByProperty } from '.';
 
 defineProps<{ name: string }>();
 </script>
@@ -8,6 +8,4 @@ defineProps<{ name: string }>();
     <div v-for="error in getErrorByProperty(name).value" :key="error">
         {{ error }}
     </div>
-
-    hmmmm.....
 </template>
