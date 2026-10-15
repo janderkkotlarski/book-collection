@@ -17,6 +17,7 @@ export const deleteRequest = (endpoint) => http.delete(endpoint);
 
 http.interceptors.request.use(
     config => {
+        console.log('No destroy yet');
         destroyErrors(); // Wis oude fouten voordat een nieuw verzoek wordt uitgevoerd
         destroyMessage(); // Wis oude "messages" voordat een nieuw verzoek wordt uitgevoerd
         return config;

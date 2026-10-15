@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getErrorBag, getErrorByProperty } from '.';
+import { getErrorByProperty } from '.';
 
 defineProps<{ name: string }>();
 </script>
