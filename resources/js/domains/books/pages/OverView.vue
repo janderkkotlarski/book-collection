@@ -1,14 +1,12 @@
 <script setup lang="ts">
 // import { onMounted } from 'vue';
-import { getAllBooks, fetchBooks, deleteBook, bookStore } from '../store';
+import { getAllBooks, deleteBook, bookStore } from '../store';
 import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 
-// fetchBooks;
 bookStore.actions.getAll(); // VOORBEELD VAN DIRECT GEBRUIKEN
 </script>
 
 <template>
-    {{ bookStore.getters.all }}
     <table>
         <tr>
             <th>Title</th>

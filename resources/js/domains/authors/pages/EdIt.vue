@@ -2,12 +2,12 @@
 // import { ref, onMounted, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Form from '../components/Form.vue';
-import { fetchAuthors, getAuthorById, updateAuthor } from '../store';
+import { authorStore, getAuthorById, updateAuthor } from '../store';
 
 const route = useRoute();
 const router = useRouter();
 
-fetchAuthors;
+// authorStore.actions.getAll();
 
 const author = getAuthorById(route.params.id);
 

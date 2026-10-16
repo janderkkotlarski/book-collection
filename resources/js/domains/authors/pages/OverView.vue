@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // import { onMounted } from 'vue';
-import { getAllAuthors, fetchAuthors, deleteAuthor } from '../store';
+import { authorStore, getAllAuthors, deleteAuthor } from '../store';
 import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 
-fetchAuthors;
+authorStore.actions.getAll();
 </script>
 
 <template>

@@ -1,6 +1,7 @@
 import { storeModuleFactory } from '../../services/store';
 
 // Establish author store
+// export const authorStore = storeModuleFactory('authors');
 export const authorStore = storeModuleFactory('authors');
 
 // getters

@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from 'vue';
-import { fetchAuthors, getAllAuthors } from '../../authors/store';
+import { authorStore, getAllAuthors } from '../../authors/store';
 import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 import FormError from '../../../services/error/FormError.vue';
 
 // Fetch authors when component is mounted
-fetchAuthors;
+authorStore.actions.getAll();
 
 const props = defineProps({ book: Object });
 
