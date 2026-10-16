@@ -33,9 +33,15 @@ class AuthorController extends Controller
     public function destroy(Author $author) {
         if ($author->books()->exists()) {
             throw new HttpResponseException(response()->json([
+                'errors' => 'undeletable',
                 'message' => 'Deze auteur kan niet worden verwijderd omdat er nog boeken aan gekoppeld zijn.'
             ], 422));
-        }
+            
+            // throw new HttpResponseException(new JsonResponse([
+            //     'errors' => 'Cannot delete',
+            //     'message' => 'De ingevoerde gegevens zijn niet juist',
+            // ], 422));
+    }
 
         $author->delete();
         return response()->json(['message' => 'Auteur succesvol verwijderd']);

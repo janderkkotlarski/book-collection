@@ -5,7 +5,9 @@ import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 import FormError from '../../../services/error/FormError.vue';
 
 // Fetch authors when component is mounted
+// Also makes error handling work
 authorStore.actions.getAll();
+
 
 const props = defineProps({ book: Object });
 

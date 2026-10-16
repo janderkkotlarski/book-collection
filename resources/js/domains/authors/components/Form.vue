@@ -4,6 +4,7 @@ import { authorStore } from '../../authors/store';
 import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 import FormError from '../../../services/error/FormError.vue';
 
+// For error handling
 authorStore.actions.getAll();
 
 const props = defineProps({ author: Object });
