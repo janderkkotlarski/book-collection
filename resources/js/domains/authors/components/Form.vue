@@ -1,8 +1,10 @@
 <script setup>
 import { ref } from 'vue';
-
+import { authorStore } from '../../authors/store';
 import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 import FormError from '../../../services/error/FormError.vue';
+
+authorStore.actions.getAll();
 
 const props = defineProps({ author: Object });
 

@@ -3,7 +3,8 @@
 import { getAllBooks, deleteBook, bookStore } from '../store';
 import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 
-bookStore.actions.getAll(); // VOORBEELD VAN DIRECT GEBRUIKEN
+// Import bookstore and then 
+bookStore.actions.getAll();
 </script>
 
 <template>

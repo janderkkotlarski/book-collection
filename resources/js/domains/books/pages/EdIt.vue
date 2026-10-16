@@ -7,8 +7,6 @@ import { getBookById, updateBook } from '../store';
 const route = useRoute();
 const router = useRouter();
 
-// bookStore.actions.getAll();
-
 const book = getBookById(route.params.id);
 
 // When working with axios and asynchronous 

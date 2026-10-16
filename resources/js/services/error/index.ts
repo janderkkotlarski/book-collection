@@ -17,5 +17,5 @@ export const setMessage = (newMessage: string) => {
     message.value = newMessage || 'Er is een fout opgetreden.';
 };
 
-export const destroyErrors = () => (errorBag.value = {}, console.log('\nerrorBag:'), console.log(errorBag), console.log(errorBag.value));
-export const destroyMessage = () => (message.value = '', console.log('\nmessage:'), console.log(message), console.log(message.value));
+export const destroyErrors = () => (errorBag.value = {});
+export const destroyMessage = () => (message.value = '');

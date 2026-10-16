@@ -12,15 +12,8 @@ const http = axios.create({
 
 http.interceptors.request.use(
     config => {
-        //console.log('No destroy yet');
-        console.log(config);
-        console.log('\n1st!');
         destroyErrors(); // Wis oude fouten voordat een nieuw verzoek wordt uitgevoerd
-        console.log(config);
-        console.log('\n2nd!');
         destroyMessage(); // Wis oude "messages" voordat een nieuw verzoek wordt uitgevoerd
-        console.log(config);
-        console.log('\n3rd!');
         return config;
     },
     error => Promise.reject(error)
