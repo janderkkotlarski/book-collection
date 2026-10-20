@@ -7,7 +7,9 @@ interface ErrorBag {
 const errorBag = ref<ErrorBag>({});
 const message = ref('');
 
+// This seems to be used nowhere, weird...
 export const getErrorBag = computed(() => errorBag.value);
+
 export const getMessage = computed(() => message.value);
 
 export const getErrorByProperty = (property: string) => computed(() => errorBag.value[property]);
