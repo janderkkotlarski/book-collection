@@ -5,14 +5,14 @@ import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 import FormError from '../../../services/error/FormError.vue';
 
 // Fetch authors when component is mounted
-// Also makes error handling work
+// Also refreshes error handling
 authorStore.actions.getAll();
-
 
 const props = defineProps({ book: Object });
 
 const emit = defineEmits(['submit']);
 
+// ... is the spread operator to spread out arrays to their elements in order to make handling easier
 const form = ref({ ...props.book });
 
 const handleSubmit = () => emit('submit', form.value);

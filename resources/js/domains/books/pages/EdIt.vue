@@ -9,7 +9,7 @@ const router = useRouter();
 
 const book = getBookById(route.params.id);
 
-// When working with axios and asynchronous 
+// When working with axios and asynchronous do use await
 const handleSubmit = async (data) => {
     await updateBook(route.params.id, data);
     router.push({ name: 'books.overview' });

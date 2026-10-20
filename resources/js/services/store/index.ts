@@ -2,18 +2,18 @@ import { ref, computed } from 'vue';
 import { getRequest, postRequest, putRequest, deleteRequest } from '../http';
 
 export const storeModuleFactory = (moduleName) => {
-    // Core starting state
+    // Core starting state, store setup
     const state = ref({});
 
     const getters = {
-        // Set up the local store
+        // Set up a local store and transferring all available relevant data into it
         all: computed(() => state.value),
         // Get entry with specific id
         getById: (id) => computed(() => state.value[id])
     };
 
     const setters = {
-        // Transfer the items to the stored data without changing the items themselves
+        // Put each item into the local store without changing them
         setAll: (items) => {
             for (const item of items) state.value[item.id] = Object.freeze(item);
         },
@@ -25,14 +25,14 @@ export const storeModuleFactory = (moduleName) => {
     };
 
     const actions = {
-        // Transfer the remote data to the local storage
+        // Transfer remote data to local storage
         getAll: async () => {
             const { data } = await getRequest(moduleName);
             if (!data) return;
             setters.setAll(data);
         }, 
 
-        // Transfer a new entry to the remote data storage
+        // Transfer a new entry to remote data
         create: async (item) => {
             const { data } = await postRequest(moduleName, item);
             if (!data) return;

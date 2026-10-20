@@ -1,7 +1,6 @@
 import { storeModuleFactory } from '../../services/store';
 
-// establish bookstore
-// export const bookStore = storeModuleFactory('books'); // DEZE DIRECT GEBRUIKEN!
+// Book store based upon generalized store
 
 export const bookStore = storeModuleFactory('books');
 

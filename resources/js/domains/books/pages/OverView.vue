@@ -3,7 +3,7 @@
 import { getAllBooks, deleteBook, bookStore } from '../store';
 import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 
-// Import bookstore and then 
+// Import data for the bookstore
 bookStore.actions.getAll();
 </script>
 
@@ -13,8 +13,9 @@ bookStore.actions.getAll();
             <th>Title</th>
             <th>Summary</th>
         </tr>
-        <!-- Because of Json resource management, these three warnings exist, though the code works well-->
+        <!-- getAllBooks is the container used to store the books locally -->
         <tr v-for="book in getAllBooks" :key="book.id">
+            <!-- Because of Json resource management, these three warnings exist, though the code works well-->
             <td>{{ book.title }}</td>
             <td>{{ book.summary }}</td>
             <td><RouterLink :to="{ name: 'books.edit', params: { id: book.id } }">Bewerk</RouterLink></td>
