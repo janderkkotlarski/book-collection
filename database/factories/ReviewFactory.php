@@ -20,7 +20,7 @@ class ReviewFactory extends Factory
     {
          return [
             'book_id' => Book::inRandomOrder()->first()->id,
-            'text' => fake()->sentences
+            'text' => fake()->sentence()
         ];
     }
 }

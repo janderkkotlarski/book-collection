@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Book;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -25,6 +24,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             BookSeeder::class,
+        ]);
+
+        $this->call([
+            ReviewSeeder::class,
         ]);
     }
 }
