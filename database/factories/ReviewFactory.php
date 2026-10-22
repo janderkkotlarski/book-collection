@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Review;
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,8 +18,9 @@ class ReviewFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            //
+         return [
+            'book_id' => Book::inRandomOrder()->first()->id,
+            'text' => fake()->sentences
         ];
     }
 }
