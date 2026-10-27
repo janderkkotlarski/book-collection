@@ -2,20 +2,27 @@ import { storeModuleFactory } from '../../services/store';
 
 // Book store based upon generalized store
 
-export const bookStore = storeModuleFactory('books');
+export interface Book {
+    id: number;
+    author_id: number;
+    title: string;
+    summary: string;    
+}
+
+export const bookStore = storeModuleFactory<Book>('books');
 
 // getters
 export const getAllBooks = bookStore.getters.all;
-export const getBookById = (id) => bookStore.getters.getById(id);
+export const getBookById = (id: number) => bookStore.getters.byId(id);
 
 //actions
 export const fetchBooks = bookStore.actions.getAll();
 
-export const createBook = async (newBook) => {
+export const createBook = async (newBook: Book) => {
     await bookStore.actions.create(newBook);
 };
 
-export const updateBook = async (id, updatedBook) => {
+export const updateBook = async (id: number, updatedBook: Book) => {
     await bookStore.actions.update(id, updatedBook); 
 };
 

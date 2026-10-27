@@ -14,21 +14,25 @@ export const storeModuleFactory = <T extends {id: number}> (moduleName: string) 
 
     const getters = {
         // Set up a local store and transferring all available relevant data into it
-        all: computed(() => state.value),
+        all: computed(() => Object.values(state.value)),
         // Get entry with specific id
-        getById: (id: number) => computed(() => state.value[id])
+        byId: (id: number) => computed(() => state.value[id]),
     };
 
     const setters = {
         // Put each item into the local store without changing them
-        setAll: (items) => {
+        setAll: (items: T[]) => {
             for (const item of items) state.value[item.id] = Object.freeze(item);
         },
 
+        setById: (item: T) => {
+            state.value[item.id] = Object.freeze(item);
+        },
+
         // Delete the stored data part based on its id
-        deleteById: (id) => {
+        deleteById: (id: number) => {
             delete state.value[id];
-        }
+        },
     };
 
     const actions = {
@@ -37,28 +41,34 @@ export const storeModuleFactory = <T extends {id: number}> (moduleName: string) 
             const { data } = await getRequest(moduleName);
             if (!data) return;
             setters.setAll(data);
-        }, 
+        },
+
+        getById: async (id: number) => {
+            const { data } = await getRequest(`${moduleName}/${id}`);
+            if (!data) return;
+            setters.setById(data);
+        },
 
         // Transfer a new entry to remote data
-        create: async (item) => {
-            const { data } = await postRequest(moduleName, item);
+        create: async (newItem: New<T>) => {
+            const { data } = await postRequest(moduleName, newItem);
             if (!data) return;
-            setters.setAll(data);
+            setters.setById(data);
         },
 
         // Update a specific remote data entry
-        update: async (id, item) => {
+        update: async (id: number, item: Updatable<T>) => {
             const { data } = await putRequest(`${moduleName}/${id}`, item);
             if (!data) return;
-            setters.setAll(data);
+            setters.setById(data);
         },
 
         // Delete a specific remote data entry
-        delete: async (id) => {
+        delete: async (id: number) => {
             await deleteRequest(`${moduleName}/${id}`);
             setters.deleteById(id);
         }
     };
 
-    return { getters, setters, actions };
+    return { state, getters, setters, actions };
 };
