@@ -1,15 +1,22 @@
-import { ref, computed } from 'vue';
+import { Ref, ref, computed } from 'vue';
 import { getRequest, postRequest, putRequest, deleteRequest } from '../http';
 
-export const storeModuleFactory = (moduleName) => {
+// More dedicated typing
+type State<T extends {id: number}> = Ref<{[id: number]: Readonly<T>}>;
+type New<T extends {id: number}> = Omit<T, 'id'>;
+type Updatable<T extends {id: number}> = New<T> &{
+    id?: number;
+}
+
+export const storeModuleFactory = <T extends {id: number}> (moduleName: string) => {
     // Core starting state, store setup
-    const state = ref({});
+    const state: State<T> = ref({});
 
     const getters = {
         // Set up a local store and transferring all available relevant data into it
         all: computed(() => state.value),
         // Get entry with specific id
-        getById: (id) => computed(() => state.value[id])
+        getById: (id: number) => computed(() => state.value[id])
     };
 
     const setters = {

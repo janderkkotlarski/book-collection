@@ -1,5 +1,5 @@
-<script setup>
-import { computed } from 'vue';
+<script setup lang="ts">
+import { ref, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { getBookById } from '../store';
 import { getAuthorById } from '../../authors/store';
@@ -16,59 +16,48 @@ reviewStore.actions.getAll();
 
 const reviews = getAllReviews;
 
-// const bookReviews = computed((book_id) => );
+const bookReviews = computed(() => {
+   return Object.values(reviews.value).filter(review => review.book_id === 4);
+});
 
-// const filtering = (array, book_id) => {
-//    const new_array = [];
+const takeApart = (whole) => {
+   let count = 0;
 
-//    for (const entry of array) {
-//       if (entry.book_id === book_id) {
-//          new_array.push(entry);
-//       }
-//    }
+   for (const part of whole) {
+      ++count;
+      console.log(count);
+   }
+}
 
-//    return new_array;
-// }
-
-// const bookReviews = filtering(reviews, book.value.id);
-
-// When working with axios and asynchronous do use await
-// const handleSubmit = async (data) => {
-//     await updateBook(route.params.id, data);
-//     router.push({ name: 'books.overview' });
-// };
-
-// <h2>Boek bewerken</h2>
-//       <Form v-if="book" :book="book" @submit="handleSubmit" />
-
-//    <tr v-for="review in getAllReviews" :key="review.id">
-//      <td>{{ review.text }}</td>
-    //</tr>
+// reviews.map(element => {
+   
+// });
 </script>
 
 <template>
-    <br />
-    <div>
-       <b>[Titel]</b>
-       <br />
-       {{ book.title }}
-    </div>
-        <br />
-    <div>
-       <b>[Auteur]</b>
-       <br />
-       {{ author.name }}
-    </div>
-    <br />
-    <div>
-       <b>[Samenvatting]</b>
-       <br />
-       {{ book.summary }}
-    </div>
-    <br />
-      <tr v-for="review in reviews" :key="review.id">
-         <td>{{ review.id }}</td>
-         <td>{{ review.book_id }}</td>
-         <td>{{ review.text }}</td>
-      </tr>
+   {{ bookReviews }}
+   <br />
+   <div>
+      <b>[Titel]</b>
+      <br />
+      {{ book.title }}
+   </div>
+      <br />
+   <div>
+      <b>[Auteur]</b>
+      <br />
+      {{ author.name }}
+   </div>
+   <br />
+   <div>
+      <b>[Samenvatting]</b>
+      <br />
+      {{ book.summary }}
+   </div>
+   <br />
+   <tr v-for="review in reviews" :key="review.id">
+      <td>{{ review.id }}</td>
+      <td>{{ review.book_id }}</td>
+      <td>{{ review.text }}</td>
+   </tr> 
 </template>
