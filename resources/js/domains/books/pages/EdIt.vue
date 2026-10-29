@@ -7,11 +7,16 @@ import { getBookById, updateBook } from '../store';
 const route = useRoute();
 const router = useRouter();
 
-const book = getBookById(route.params.id);
+// const book = getBookById(route.params.id);
+
+const bookId = Number(route.params.id);
+
+const book = getBookById(bookId);
 
 // When working with axios and asynchronous do use await
 const handleSubmit = async (data) => {
-    await updateBook(route.params.id, data);
+    await updateBook(bookId, data);
+    console.log(typeof data);
     router.push({ name: 'books.overview' });
 };
 </script>

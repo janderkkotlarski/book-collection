@@ -37,7 +37,7 @@ http.interceptors.response.use(
 );
 
 // Specific request handling for binding remote and local storage
-export const getRequest = (endpoint) => http.get(endpoint);
-export const postRequest = (endpoint, data) => http.post(endpoint, data);
-export const putRequest = (endpoint, data) => http.put(endpoint, data);
-export const deleteRequest = (endpoint) => http.delete(endpoint);
+export const getRequest = (endpoint: string) => http.get(endpoint);
+export const postRequest = (endpoint: string, data: Object) => http.post(endpoint, data);
+export const putRequest = (endpoint: string, data:Object) => http.put(endpoint, data);
+export const deleteRequest = (endpoint: string) => http.delete(endpoint);
