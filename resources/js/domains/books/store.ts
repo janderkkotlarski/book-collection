@@ -26,6 +26,6 @@ export const updateBook = async (id: number, updatedBook: Book) => {
     await bookStore.actions.update(id, updatedBook); 
 };
 
-export const deleteBook = async (id) => {
+export const deleteBook = async (id: number) => {
     await bookStore.actions.delete(id);
 };
