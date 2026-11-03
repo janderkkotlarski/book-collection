@@ -8,6 +8,8 @@ import FormError from '../../../services/error/FormError.vue';
 // Also refreshes error handling
 authorStore.actions.getAll();
 
+const authors = authorStore.getters.all;
+
 const props = defineProps({ book: Object });
 
 const emit = defineEmits(['submit']);
@@ -31,7 +33,7 @@ const handleSubmit = () => emit('submit', form.value);
 
         <label>Auteur:</label>
         <select v-model="form.author_id">
-            <option v-for="author in getAllAuthors" :key="author.id" :value="author.id">
+            <option v-for="author in authors" :key="author.id" :value="author.id">
                 {{ author.name }}               
             </option>            
         </select>

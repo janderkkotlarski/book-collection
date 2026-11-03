@@ -19,7 +19,6 @@ const deleteBook = async (id: number) => {
             <th>Title</th>
             <th>Summary</th>
         </tr>
-        <!-- getAllBooks is the container used to store the books locally -->
         <tr v-for="book in books" :key="book.id">
             <!-- Because of Json resource management, these three warnings exist, though the code works well-->
             <td>{{ book.title }}</td>

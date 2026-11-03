@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { getBookById, getAllBooks } from '../store';
+import { bookStore} from '../store';
 import { getAuthorById, getAllAuthors } from '../../authors/store';
 import { getAllReviews, reviewStore } from '../../reviews/store';
 
 const route = useRoute();
 
-const books = getAllBooks;
-
 const bookId = Number(route.params.id);
 
-const book = computed(() => {
-   return Object.values(books.value).find(boook => boook.id === bookId);
-});
+// Import data for the bookstore
+bookStore.actions.getAll();
+
+const book = bookStore.getters.getById(bookId);
 
 const authors = getAllAuthors;
+
 
 const author = computed(() => {
    return Object.values(authors.value).find(authoor => authoor.id === book.value.author_id);

@@ -2,7 +2,7 @@
 // import { ref, onMounted, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Form from '../components/Form.vue';
-import { bookStore } from '../store';
+import { Book, bookStore } from '../store';
 
 const route = useRoute();
 const router = useRouter();
