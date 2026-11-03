@@ -6,8 +6,6 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-// bookStore.actions.getAll();
-
 const book = ref({
     author_id: null,
     title: '',

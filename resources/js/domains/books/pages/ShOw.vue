@@ -2,7 +2,7 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { bookStore} from '../store';
-import { getAuthorById, getAllAuthors } from '../../authors/store';
+import { Author, authorStore } from '../../authors/store';
 import { getAllReviews, reviewStore } from '../../reviews/store';
 
 const route = useRoute();
@@ -14,7 +14,7 @@ bookStore.actions.getAll();
 
 const book = bookStore.getters.getById(bookId);
 
-const authors = getAllAuthors;
+const authors = authorStore.getters.all;
 
 
 const author = computed(() => {

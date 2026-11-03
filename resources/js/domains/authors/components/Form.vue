@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { authorStore } from '../../authors/store';
 import ErrorMessage from '../../../services/error/ErrorMessage.vue';
