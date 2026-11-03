@@ -1,22 +1,21 @@
-<script setup>
+<script setup lang="ts">
 // import { ref, onMounted, computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import Form from '../components/Form.vue';
-import { getBookById, updateBook } from '../store';
+import { bookStore } from '../store';
 
 const route = useRoute();
 const router = useRouter();
 
-// const book = getBookById(route.params.id);
+bookStore.actions.getAll();
 
 const bookId = Number(route.params.id);
 
-const book = getBookById(bookId);
+const book = bookStore.getters.getById(bookId);
 
 // When working with axios and asynchronous do use await
-const handleSubmit = async (data) => {
-    await updateBook(bookId, data);
-    console.log(typeof data);
+const handleSubmit = async (data: Book) => {
+    await bookStore.actions.update(bookId, data);
     router.push({ name: 'books.overview' });
 };
 </script>

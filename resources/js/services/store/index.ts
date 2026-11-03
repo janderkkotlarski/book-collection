@@ -3,10 +3,10 @@ import { getRequest, postRequest, putRequest, deleteRequest } from '../http';
 
 // More dedicated typing
 type State<T extends {id: number}> = Ref<{[id: number]: Readonly<T>}>;
+
 type New<T extends {id: number}> = Omit<T, 'id'>;
-type Updatable<T extends {id: number}> = New<T> &{
-    id?: number;
-}
+
+type Updatable<T extends {id: number}> = New<T> &{ id?: number; };
 
 export const storeModuleFactory = <T extends {id: number}> (moduleName: string) => {
     // Core starting state, store setup
@@ -14,9 +14,10 @@ export const storeModuleFactory = <T extends {id: number}> (moduleName: string) 
 
     const getters = {
         // Set up a local store and transferring all available relevant data into it
-        all: computed(() => Object.values(state.value)),
+        // all: computed(() => Object.values(state.value)),
+        all: computed(() => state.value),
         // Get entry with specific id
-        byId: (id: number) => computed(() => state.value[id]),
+        getById: (id: number) => computed(() => state.value[id]),
     };
 
     const setters = {
@@ -50,17 +51,17 @@ export const storeModuleFactory = <T extends {id: number}> (moduleName: string) 
         },
 
         // Transfer a new entry to remote data
-        create: async (newItem: New<T>) => {
-            const { data } = await postRequest(moduleName, newItem);
+        create: async (item: New<T>) => {
+            const { data } = await postRequest(moduleName, item);
             if (!data) return;
-            setters.setById(data);
+            setters.setAll(data);
         },
 
         // Update a specific remote data entry
         update: async (id: number, item: Updatable<T>) => {
             const { data } = await putRequest(`${moduleName}/${id}`, item);
             if (!data) return;
-            setters.setById(data);
+            setters.setAll(data);
         },
 
         // Delete a specific remote data entry
