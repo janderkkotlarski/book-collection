@@ -17,7 +17,7 @@ export const storeModuleFactory = <T extends {id: number}> (moduleName: string) 
         // all: computed(() => Object.values(state.value)),
         all: computed(() => state.value),
         // Get entry with specific id
-        getById: (id: number) => computed(() => state.value[id]),
+        byId: (id: number) => computed(() => state.value[id]),
     };
 
     const setters = {

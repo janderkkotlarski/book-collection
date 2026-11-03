@@ -11,7 +11,7 @@ bookStore.actions.getAll();
 
 const bookId = Number(route.params.id);
 
-const book = bookStore.getters.getById(bookId);
+const book = bookStore.getters.byId(bookId);
 
 // When working with axios and asynchronous do use await
 const handleSubmit = async (data: Book) => {
