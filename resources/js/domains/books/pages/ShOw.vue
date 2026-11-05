@@ -3,7 +3,7 @@ import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { bookStore} from '../store';
 import { authorStore } from '../../authors/store';
-import { reviewStore } from '../../reviews/store';
+import { Review, reviewStore } from '../../reviews/store';
 
 const route = useRoute();
 
@@ -16,40 +16,17 @@ const book = bookStore.getters.byId(bookId);
 
 authorStore.actions.getAll();
 
-// const authorId = book.value.author_id;
-
-// const author = authorStore.getters.byId(authorId);
-
-// const author = computed(() => {
-//    return Object.values(authors.value).find(authoor => authoor.id === book.value.author_id);
-// });
-
 reviewStore.actions.getAll();
 
 const reviews = reviewStore.getters.all;
 
-
-
-// const bookReviews = reviews.value.filter(review => review.book_id === bookId))
-
-
-
-
-
 const bookReviews = computed(() => {
-   return Object.values(reviews.value).filter(review => review.book_id === bookId);
+   return Object.values(reviews.value).filter((review) => review.book_id === bookId);
 });
-
-
-// {{ author.name }}
 
 </script>
 
 <template>
-   {{ authorId }}
-
-   <br />
-
    <div>
       <b>[Titel]</b>
       <br />
@@ -59,6 +36,8 @@ const bookReviews = computed(() => {
    <div>
       <b>[Auteur]</b>
       <br />
+      <!-- Deploy this here in order to adhere to asynchronous data import -->
+      <!-- If read earlier, no data will be read and the whole application will have critical errors -->
       {{ authorStore.getters.byId(book.author_id).value.name }}
    </div>
    <br />
