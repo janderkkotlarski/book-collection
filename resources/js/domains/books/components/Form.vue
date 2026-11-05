@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { authorStore, getAllAuthors } from '../../authors/store';
+import { authorStore } from '../../authors/store';
 import ErrorMessage from '../../../services/error/ErrorMessage.vue';
 import FormError from '../../../services/error/FormError.vue';
 

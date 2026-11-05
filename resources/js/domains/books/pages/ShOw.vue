@@ -5,9 +5,27 @@ import { bookStore} from '../store';
 import { authorStore } from '../../authors/store';
 import { Review, reviewStore } from '../../reviews/store';
 
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
+
+import Form from '../../reviews/components/Form.vue';
+
 const route = useRoute();
 
 const bookId = Number(route.params.id);
+
+const review = ref({
+    book_id: bookId,
+    text: ''
+});
+
+const handleSubmit = async (data: Review) => {
+    await reviewStore.actions.create(data);
+    router.push({name: 'books.show'});
+};
+
+
 
 // Import data for the bookstore
 bookStore.actions.getAll();
@@ -24,6 +42,9 @@ const bookReviews = computed(() => {
    return Object.values(reviews.value).filter((review) => review.book_id === bookId);
 });
 
+const deleteReview = async (id: number) => {
+    await reviewStore.actions.delete(id);
+};
 </script>
 
 <template>
@@ -37,7 +58,7 @@ const bookReviews = computed(() => {
       <b>[Auteur]</b>
       <br />
       <!-- Deploy this here in order to adhere to asynchronous data import -->
-      <!-- If read earlier, no data will be read and the whole application will have critical errors -->
+      <!-- book.author_id is not loaded when book is declared due to data promises -->
       {{ authorStore.getters.byId(book.author_id).value.name }}
    </div>
    <br />
@@ -51,10 +72,17 @@ const bookReviews = computed(() => {
       <tr>
          <th></th>
          <th>Beoordelingen</th>
+         <th></th>
       </tr>
       <tr v-for="review in bookReviews" :key="review.id">
          <td>-</td>
-         <td>{{ review.text }}</td>         
+         <td>{{ review.text }}</td>
+         <td><button @click="deleteReview(review.id)">Verwijder</button></td>
       </tr> 
    </table>
+   <br />
+   <div>
+        <h2>Nieuw beoordeling toevoegen</h2>
+        <Form :review="review" @submit="handleSubmit" />
+    </div>
 </template>
