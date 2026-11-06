@@ -36,7 +36,7 @@ class AuthorController extends Controller
                 'errors' => 'Cannot be deleted',
                 'message' => 'Deze auteur kan niet worden verwijderd omdat er nog boeken aan gekoppeld zijn!'
             ], 422));
-    }
+        }
 
         $author->delete();
         return response()->json(['message' => 'Auteur succesvol verwijderd']);

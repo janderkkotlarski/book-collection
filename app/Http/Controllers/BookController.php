@@ -7,6 +7,9 @@ use App\Models\Book;
 use App\Http\Requests\StoreBookRequest;
 use Illuminate\Http\Request;
 
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Exceptions\HttpResponseException;
+
 class BookController extends Controller
 {
     public function index() {
@@ -28,6 +31,13 @@ class BookController extends Controller
     }
 
     public function destroy(Book $book) {
+        if ($book->reviews()->exists()) {
+            throw new HttpResponseException(new JsonResponse([
+                'errors' => 'Cannot be deleted',
+                'message' => 'Dit boek kan niet worden verwijderd omdat er nog beoordelingen aan gekoppeld zijn!'
+            ], 422));
+        }
+
         $book->delete();
         return response()->json(['message' => 'Boek succesvol verwijderd']);
     }
