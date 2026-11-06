@@ -25,8 +25,6 @@ const handleSubmit = async (data: Review) => {
     router.push({name: 'books.show'});
 };
 
-
-
 // Import data for the bookstore
 bookStore.actions.getAll();
 
@@ -45,12 +43,6 @@ const bookReviews = computed(() => {
 const deleteReview = async (id: number) => {
     await reviewStore.actions.delete(id);
 };
-
-const idSelect = ref(0);
-
-const editReview = (id: number) => {
-   idSelect.value = id;
-}
 </script>
 
 <template>
@@ -83,9 +75,8 @@ const editReview = (id: number) => {
       <tr v-for="review in bookReviews" :key="review.id">
          <td>-</td>
          <td>{{ review.text }}</td>
-         <td><button @click="editReview(review.id)">Bewerk</button></td>
+         <td><RouterLink :to="{ name: 'reviews.edit', params: { id: review.id } }">Bewerk</RouterLink></td>
          <td><button @click="deleteReview(review.id)">Verwijder</button></td>
-         <input v-show="review.id === idSelect">Dit is nummer: {{ review.id }} en idSelect: {{ idSelect }}</input>
       </tr> 
    </table>
    <br />
