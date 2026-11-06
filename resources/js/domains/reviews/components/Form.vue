@@ -13,7 +13,12 @@ const emit = defineEmits(['submit']);
 
 const form = ref({ ...props.review });
 
-const handleSubmit = () => emit('submit', form.value);
+let count = 0;
+
+const handleSubmit = () => {
+    emit('submit', form.value);
+    form.value.text = "";
+};
 </script>
 
 <template>
@@ -21,7 +26,7 @@ const handleSubmit = () => emit('submit', form.value);
 
     <form @submit.prevent="handleSubmit">
         <label>Tekst:</label>
-        <input v-model="form.text" type="text" />
+        <input ref="thisForm" v-model="form.text" type="text" />
 
         <button type="submit">Opslaan</button>
 

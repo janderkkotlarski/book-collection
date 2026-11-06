@@ -45,6 +45,12 @@ const bookReviews = computed(() => {
 const deleteReview = async (id: number) => {
     await reviewStore.actions.delete(id);
 };
+
+const idSelect = ref(0);
+
+const editReview = (id: number) => {
+   idSelect.value = id;
+}
 </script>
 
 <template>
@@ -77,12 +83,14 @@ const deleteReview = async (id: number) => {
       <tr v-for="review in bookReviews" :key="review.id">
          <td>-</td>
          <td>{{ review.text }}</td>
+         <td><button @click="editReview(review.id)">Bewerk</button></td>
          <td><button @click="deleteReview(review.id)">Verwijder</button></td>
+         <input v-show="review.id === idSelect">Dit is nummer: {{ review.id }} en idSelect: {{ idSelect }}</input>
       </tr> 
    </table>
    <br />
    <div>
         <h2>Nieuw beoordeling toevoegen</h2>
         <Form :review="review" @submit="handleSubmit" />
-    </div>
+   </div>
 </template>
