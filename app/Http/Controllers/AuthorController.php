@@ -17,7 +17,10 @@ class AuthorController extends Controller
     }
 
     public function store(StoreAuthorRequest $request) {
+        // $author kan weggelaten worden
         $author = Author::create($request->validated());
+
+        // TODO: ik zou zelf de voorkeur geven aan het returnen van de opgeslagen author, en alleen deze returnen en bijwerken in de vue store
 
         $authors = Author::all();
         return AuthorResource::collection($authors);

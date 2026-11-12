@@ -22,6 +22,8 @@ const review = ref({
 
 const handleSubmit = async (data: Review) => {
     await reviewStore.actions.create(data);
+   // TODO: kun je het ook zo maken dat door reactivity de nieuwe review automatisch op de pagina 
+   // verschijnt zonder dat je de router hoeft aan te roepen?
     router.push({name: 'books.show'});
 };
 
@@ -30,6 +32,8 @@ bookStore.actions.getAll();
 
 const book = bookStore.getters.byId(bookId);
 
+// TODO: ik zou de actions eenmalig in de App.vue gebruiken zodat je in 1 keer alle data van de backend ophaalt. 
+// Op de pagina's kun je dan getters gebruiken om het specifieke item op te vragen
 authorStore.actions.getAll();
 
 reviewStore.actions.getAll();
